@@ -1,0 +1,10 @@
+[package]
+name = "nffi"
+version = "0.0.1"
+author = "monodyle <monodylh@gmail.com>"
+
+[lib]
+name = "nffi"
+crate-type = ["dylib"]
+
+[dependencies]
