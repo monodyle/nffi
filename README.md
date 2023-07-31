@@ -10,9 +10,11 @@ A Node using Rust as an addon.
 
 Happy coding!
 
-## Benchmarks
+## Benchmark
 
-Using [Quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort) with random 1 million record.
+### [Quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort)
+
+Input: 1 million record with random sorted
 
 ```bash
 $ hyperfine --warmup 3 'node ./benchmark/index.js rust' 'node ./benchmark/index.js'
@@ -27,4 +29,25 @@ Benchmark 2: node ./benchmark/index.js
 Summary
   node ./benchmark/index.js ran
     9.01 ± 1.15 times faster than node ./benchmark/index.js rust
+```
+
+```bash
+$ time node ./benchmark/node.js
+node quicksort: 92.759ms
+
+________________________________________________________
+Executed in  194.70 millis    fish           external
+   usr time  174.27 millis   46.00 micros  174.23 millis
+   sys time   20.68 millis  183.00 micros   20.50 millis
+
+$ time node ./benchmark/rust.js
+create IntArray type: 0.232ms
+transform Array<number> to IntArray: 2.179s
+rust quicksort: 69.323ms
+transform IntArray to Array<number>: 381.43ms
+
+________________________________________________________
+Executed in    2.82 secs    fish           external
+   usr time    2.91 secs   62.00 micros    2.91 secs
+   sys time    0.31 secs  242.00 micros    0.31 secs
 ```

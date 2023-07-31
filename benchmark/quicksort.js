@@ -29,8 +29,11 @@ function quicksort(arr) {
     }
   }
 
+  console.time("node quicksort");
   _quicksort(arr, 0, arr.length - 1);
+  console.timeEnd("node quicksort");
+
   return arr;
 }
 
-module.exports = quicksort
+module.exports = quicksort;
