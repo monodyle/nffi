@@ -1,4 +1,4 @@
-const rust_quicksort = require("../src/lib.js");
-const input = require("./input");
+const nth_prime = require("../src/lib.js");
 
-rust_quicksort(input);
+const [_, __, _input] = process.argv
+nth_prime(Number(_input));

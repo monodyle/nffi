@@ -10,44 +10,55 @@ A Node using Rust as an addon.
 
 Happy coding!
 
-## Benchmark
+## Benchmark: Get nth prime number
 
-### [Quicksort algorithm](https://en.wikipedia.org/wiki/Quicksort)
-
-Input: 1 million record with random sorted
+### Get 5th prime number
 
 ```bash
-$ hyperfine --warmup 3 'node ./benchmark/rust.js' 'node ./benchmark/node.js'
-Benchmark 1: node ./benchmark/rust.js
-  Time (mean ± σ):      2.549 s ±  0.316 s    [User: 3.305 s, System: 0.244 s]
-  Range (min … max):    2.249 s …  3.065 s    10 runs
+$ hyperfine --warmup 3 'node ./benchmark/node.js 5' 'node ./benchmark/rust.js 5'
+Benchmark 1: node ./benchmark/node.js 5
+  Time (mean ± σ):      26.3 ms ±   0.4 ms    [User: 21.3 ms, System: 4.6 ms]
+  Range (min … max):    25.5 ms …  27.9 ms    111 runs
 
-Benchmark 2: node ./benchmark/node.js
-  Time (mean ± σ):     283.0 ms ±   8.3 ms    [User: 334.2 ms, System: 34.4 ms]
-  Range (min … max):   272.9 ms … 296.1 ms    10 runs
+Benchmark 2: node ./benchmark/rust.js 5
+  Time (mean ± σ):      84.9 ms ±   1.2 ms    [User: 138.9 ms, System: 13.5 ms]
+  Range (min … max):    82.9 ms …  87.5 ms    35 runs
 
 Summary
-  node ./benchmark/node.js ran
-    9.01 ± 1.15 times faster than node ./benchmark/rust.js
+  node ./benchmark/node.js 5 ran
+    3.22 ± 0.07 times faster than node ./benchmark/rust.js 5
 ```
 
+### Get 50th prime number
+
 ```bash
-$ time node ./benchmark/node.js
-node quicksort: 92.759ms
+$ hyperfine --warmup 10 'node ./benchmark/node.js 50' 'node ./benchmark/rust.js 50'
+Benchmark 1: node ./benchmark/node.js 50
+  Time (mean ± σ):      26.3 ms ±   0.4 ms    [User: 20.5 ms, System: 5.4 ms]
+  Range (min … max):    25.7 ms …  28.8 ms    109 runs
 
-________________________________________________________
-Executed in  194.70 millis    fish           external
-   usr time  174.27 millis   46.00 micros  174.23 millis
-   sys time   20.68 millis  183.00 micros   20.50 millis
+Benchmark 2: node ./benchmark/rust.js 50
+  Time (mean ± σ):      84.8 ms ±   1.5 ms    [User: 134.5 ms, System: 18.8 ms]
+  Range (min … max):    81.8 ms …  89.0 ms    34 runs
 
-$ time node ./benchmark/rust.js
-create IntArray type: 0.232ms
-transform Array<number> to IntArray: 2.179s
-rust quicksort: 69.323ms
-transform IntArray to Array<number>: 381.43ms
+Summary
+  node ./benchmark/node.js 50 ran
+    3.23 ± 0.08 times faster than node ./benchmark/rust.js 50
+```
 
-________________________________________________________
-Executed in    2.82 secs    fish           external
-   usr time    2.91 secs   62.00 micros    2.91 secs
-   sys time    0.31 secs  242.00 micros    0.31 secs
+### Get 250th prime number
+
+```bash
+$ hyperfine --warmup 25 'node ./benchmark/node.js 250' 'node ./benchmark/rust.js 250'
+Benchmark 1: node ./benchmark/node.js 250
+  Time (mean ± σ):      27.8 ms ±   0.9 ms    [User: 23.4 ms, System: 4.0 ms]
+  Range (min … max):    26.9 ms …  33.2 ms    106 runs
+
+Benchmark 2: node ./benchmark/rust.js 250
+  Time (mean ± σ):      84.6 ms ±   1.0 ms    [User: 131.4 ms, System: 21.0 ms]
+  Range (min … max):    82.0 ms …  87.2 ms    34 runs
+
+Summary
+  node ./benchmark/node.js 250 ran
+    3.05 ± 0.10 times faster than node ./benchmark/rust.js 250
 ```
